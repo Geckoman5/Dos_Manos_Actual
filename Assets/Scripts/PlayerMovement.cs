@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //link both the player controller and the player cube
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

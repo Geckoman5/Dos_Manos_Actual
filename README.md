@@ -2,4 +2,10 @@ Dos Manos (or perhaps Dos Manos Actual) is a game about a fellow with 2 differen
 
 This is a project for school.
 
-This readme file will probably have a version type of history on it.
+To do:
+Make player move as previous
+Make player punch as previous with color thing
+Will use what last time had as a reference
+
+History:
+Work on DMA began on Oct 20.
