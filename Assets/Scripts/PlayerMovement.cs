@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,12 +18,18 @@ public class PlayerMovement : MonoBehaviour
  //"Note: To be edited in a future menu"
     public float mouseSensitivity = 100f; //mouse
     public Transform cameraPivot;
-    public float minPitch = -30f;
-    public float maxPitch = 60f;
+    //public float minPitch = -30f; raycast therefore not needed
+    //public float maxPitch = 60f;
     public bool mouseLookEnabled = true;
-    [Header("TEMP Movement Rotation")] //TEMPORARY
-    public bool rotateWithMovement = true;
-    public float movementRotationSpeed = 10f;
+    //[Header("TEMP Movement Rotation")] Not even used!
+    //public bool rotateWithMovement = true;
+   //public float movementRotationSpeed = 10f;
+
+    [Header("Surface Alignment")]
+    [SerializeField] private LayerMask WhatIsGround;
+    [SerializeField] private AnimationCurve animCurve;
+    [SerializeField] private float time;
+    [SerializeField] private Transform ModelHolder;
 
     void Start()
     {
@@ -47,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
         //removed laserthing
         //no more handlemovementrotation
+        SurfaceAlignment();
     }
 
     void HandleRotation()
@@ -60,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         float mouseY = lookInput.y * mouseSensitivity * Time.deltaTime;
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, minPitch, maxPitch); //might have been for the raycast laser thing
+        //xRotation = Mathf.Clamp(xRotation, minPitch, maxPitch); [might have been for the raycast laser thing]
 
         if (cameraPivot != null)
         {
@@ -83,6 +91,24 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         Vector3 finalMove = move * speed + Vector3.up * velocity.y;
         controller.Move(finalMove * Time.deltaTime);
+    }
+
+    private void SurfaceAlignment()
+    {
+        if (ModelHolder == null) return; //Checks if ModelHolder is connected
+
+        Ray ray = new Ray(transform.position + Vector3.up * 0.1f, -transform.up);
+        RaycastHit info;
+
+        if (Physics.Raycast(ray, out info, 2f, WhatIsGround))
+        {
+            Quaternion targetRotation = Quaternion.FromToRotation(Vector3.up, info.normal) * transform.rotation;
+            ModelHolder.rotation = Quaternion.Lerp(ModelHolder.rotation, targetRotation, animCurve.Evaluate(time) * Time.deltaTime);
+        }
+        else
+        {
+            ModelHolder.localRotation = Quaternion.Slerp(ModelHolder.localRotation, Quaternion.identity, Time.deltaTime * 5f);
+        }
     }
 }
 

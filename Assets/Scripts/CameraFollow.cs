@@ -25,16 +25,16 @@ public class CameraFollow : MonoBehaviour
 
         currentSideOffset = Mathf.Lerp
         (currentSideOffset, targetSideOffset, sideMoveSpeed * Time.deltaTime);
-        // AAAA this moves the camera
+        // above, this moves the camera
 
         Vector3 finalOffset = offset;
         finalOffset.x += currentSideOffset;
-        // AAAA this finds the position
+        // above, this finds the position
 
         Vector3 rotatedOffset = target.rotation * finalOffset;
         Vector3 desiredPosition = target.position + rotatedOffset;
 
-        //wall stuff
+        //below, wall stuff
         Vector3 direction = desiredPosition - target.position;
         float distance = direction.magnitude;
 
