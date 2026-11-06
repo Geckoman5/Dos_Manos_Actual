@@ -3,7 +3,9 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     [SerializeField] private string targetTag;
+    [SerializeField] private int damageAmount = 1;
     private Collider hitboxCollider;
+
 
     void Start()
     {
@@ -13,11 +15,17 @@ public class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(targetTag))
+        if (!other.CompareTag(targetTag))
+        return;
+
+        EnemyBrain enemy = other.GetComponent<EnemyBrain>();
+        if (enemy != null)
         {
-            Debug.Log("Valid Detection from Hitbox");
-            Destroy(other.gameObject); //maybe put here then the damage thing?
+            enemy.TakeDamage(damageAmount);
+            //Note that damageAmount might change depending on the action done by the hands
+            //the hands currently only do 1 action
         }
+    
     }
      public void EnableHitbox()
     {

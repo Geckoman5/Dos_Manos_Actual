@@ -1,18 +1,36 @@
 Dos Manos (or perhaps Dos Manos Actual) is a game about a fellow with 2 differently colored hands.
 
-This is a project for school. ~~DO NOT PUT THIS IN PUBLIC~~
-nah it's gotta be public
+This is a project for school. This is set to public for now.
 
 To do:
+
+Figure how to put custom materials into unity
+
+Make damage, enemy, wave systems
+damage system basics set up!
+
 ~~Make player move as previous~~ (DONE)
 
-Make player punch as previous with color thing (HALF DONE)
+~~Make player punch as previous with color thing~~ (DONE)
 
 ~~Will use what last time had as a reference~~ (DID SO)
 
-Make damage, enemy, wave systems
+
 
 History:
+
+                    ==Agent (of) Chaos== (Nov 6)
+
+- Fibbled a bit with the built in AI chat thing here, kinda useful at times, kind not in others
+    - Agents.md is there to tell any AI to NOT make/change any code, act as a teacher and guide almost
+    - Kind doesn't work as the AI defaults to just telling the code
+    - AND THE autocomplete thing oooh man does it annoy me
+    - i kinda want to actually learn code sometimes man
+    - yeah also it does read this readme file so hopefully my criticisms of it can make it change a bit
+- Added Health text! You know when you are supposed to be dead now!
+- Player can punch and kill 2 dummies, one orange and one blue
+- Structural Changes
+- TMPro package added
 
 
                    ==Working Slope== (Oct 30)

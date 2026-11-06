@@ -21,6 +21,7 @@ public class HandSelectionManager : MonoBehaviour
     private enum SelectedHand { None, Blue, Orange }
     private SelectedHand currentSelection = SelectedHand.None;
     //Start game with none selected
+    //also this line always causes a warning 
 
     void Start()
     {

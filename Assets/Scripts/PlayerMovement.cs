@@ -14,22 +14,19 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement & Physics")]
     public float speed = 12f;
     public float gravity =-9.81f;
+
     [Header("Look Settings")]
  //"Note: To be edited in a future menu"
     public float mouseSensitivity = 100f; //mouse
     public Transform cameraPivot;
-    //public float minPitch = -30f; raycast therefore not needed
-    //public float maxPitch = 60f;
     public bool mouseLookEnabled = true;
-    //[Header("TEMP Movement Rotation")] Not even used!
-    //public bool rotateWithMovement = true;
-   //public float movementRotationSpeed = 10f;
 
     [Header("Surface Alignment")]
     [SerializeField] private LayerMask WhatIsGround;
     [SerializeField] private AnimationCurve animCurve;
     [SerializeField] private float time;
     [SerializeField] private Transform ModelHolder;
+    [SerializeField] private float Rate;
 
     void Start()
     {
@@ -103,7 +100,8 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out info, 2f, WhatIsGround))
         {
             Quaternion targetRotation = Quaternion.FromToRotation(Vector3.up, info.normal) * transform.rotation;
-            ModelHolder.rotation = Quaternion.Lerp(ModelHolder.rotation, targetRotation, animCurve.Evaluate(time) * Time.deltaTime);
+            ModelHolder.rotation = Quaternion.Lerp(ModelHolder.rotation, targetRotation, animCurve.Evaluate(time) * Time.deltaTime * speed / Rate);
+            //
         }
         else
         {
