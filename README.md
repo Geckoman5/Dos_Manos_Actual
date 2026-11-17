@@ -8,6 +8,10 @@ Figure how to put custom materials into unity
 
 Make damage, enemy, wave systems
 damage system basics set up!
+wave system basics set up!
+Enemies in progress
+
+MAKE ACTUAL MAP!!!
 
 ~~Make player move as previous~~ (DONE)
 
@@ -18,6 +22,15 @@ damage system basics set up!
 
 
 History:
+
+                     == Late Update (Nov 17) ==
+
+- Forgot to do an update woops.
+- made enemyBrain, enemies can move and attack player, when idle they follow themselves, turns into a silly cattepillar
+- DEFINETLY scraping this enemy for SURE
+- Wave system foundations set up, debating whether to put it 
+- Forgot what other changes I made
+- And that's it
 
                     ==Agent (of) Chaos== (Nov 6)
 
